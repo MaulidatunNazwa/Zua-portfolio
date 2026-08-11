@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maulidatun Nazwa | Data Analyst & Business Intelligence Portfolio</title>
+  <meta name="description"
+    content="Portfolio Website Maulidatun Nazwa - Data Analyst, AI & Data Science Enthusiast, Business Intelligence. Fresh Graduate S1 Sistem Informasi UNAS." />
+  <meta name="theme-color" content="#0B0B0E" />
+
+  <!-- Google Fonts: Plus Jakarta Sans, Inter, & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            theme: {
+              bg: '#0B0B0E',
+              card: '#1A1218',
+              deep: '#181016',
+              border: '#5C1B33',
+              sage: '#E63974',
+              sagedark: '#C22357',
+              blue: '#389BE8',
+              text: '#F4F0EA',
+              muted: '#B8A3B0'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- React 18 & Babel & Lucide UMD Standalone -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      background-color: #0B0B0E;
+      color: #F4F0EA;
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0B0B0E;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #E63974;
+      border-radius: 9999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #F44380;
+    }
+
+    /* Organic Blob Morph Frame */
+    .blob-morph {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      animation: blobMorph 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes blobMorph {
+      0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      }
+
+      50% {
+        border-radius: 40% 60% 70% 30% / 50% 60% 30% 60%;
+      }
+
+      100% {
+        border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+      }
+    }
+
+    /* Shining Glow Effect */
+    @keyframes shiningGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 25px rgba(230, 57, 116, 0.4), 0 0 50px rgba(56, 155, 232, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 45px rgba(230, 57, 116, 0.8), 0 0 75px rgba(56, 155, 232, 0.6);
+      }
+    }
+
+    .animate-shining-glow {
+      animation: shiningGlow 3s ease-in-out infinite alternate;
+    }
+
+    /* Shimmer Sweep Reflection */
+    @keyframes shimmerSweep {
+      0% {
+        transform: translateX(-150%) translateY(-150%) rotate(45deg);
+      }
+
+      50%,
+      100% {
+        transform: translateX(200%) translateY(200%) rotate(45deg);
+      }
+    }
+
+    .animate-shimmer-sweep {
+      animation: shimmerSweep 4s ease-in-out infinite;
+    }
+
+    /* Slow Bouncing Float Animation */
+    @keyframes floatBounce {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .animate-float-bounce {
+      animation: floatBounce 4s ease-in-out infinite;
+    }
+
+    @keyframes blinkCursor {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .animate-blink {
+      animation: blinkCursor 0.8s infinite;
+    }
+
+    /* Starfield Twinkle Animation */
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.2;
+        transform: scale(0.75);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.35);
+      }
+    }
+
+    .animate-twinkle {
+      animation: twinkle 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body
+  class="bg-gradient-to-b from-[#0B0B0E] via-[#181016] to-[#0B0B0E] text-[#F4F0EA] antialiased selection:bg-[#E63974] selection:text-[#0B0B0E]">
+
+  <!-- React Root Container -->
+  <div id="root"></div>
+
+  <!-- Standalone Executable React App Script -->
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // Helper for Lucide & Brand icons rendering in standalone mode
+    function Icon({ name, className = "w-5 h-5 inline-block" }) {
+      useEffect(() => {
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      }, [name]);
+
+      if (name === 'figma') {
+        return (
+          <svg className={className} viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38H19V28.5Z" fill="#1ABCFE" />
+            <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83" />
+            <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262" />
+            <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E" />
+            <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF" />
+          </svg>
+        );
+      }
+
+      if (name === 'linkedin') {
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect width="4" height="12" x="2" y="9" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        );
+      }
+
+      if (name === 'github') {
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg>
+        );
+      }
+
+      return <i data-lucide={name} className={className}></i>;
+    }
+
+    // --- NAZWA DATA ---
+    const personalData = {
+      name: "Maulidatun Nazwa",
+      shortName: "Nazwa",
+      title: "Data Analyst | AI & Data Science Enthusiast | Business Intelligence",
+      roles: [
+        "Data Analyst",
+        "AI & Data Science Enthusiast",
+        "Business Intelligence"
+      ],
+      heroDescription: "Mengubah deretan angka menjadi narasi visual yang bermakna. Saya bersemangat mengeksplorasi dunia Data Analytics, Business Intelligence, dan AI untuk menghadirkan wawasan bisnis yang berdampak nyata.",
+      aboutGreeting: "Hello, I'm Maulidatun Nazwa",
+      aboutTagline: "Transforming data into actionable insights",
+      aboutBio: "Saya Maulidatun Nazwa, lulusan S1 Sistem Informasi dari Universitas Nasional. Bagi saya, data bukan sekadar kumpulan baris dan angka, melainkan sebuah cerita yang menunggu untuk diungkap. Saya memiliki ketertarikan mendalam di dunia Data Analytics, Business Intelligence, dan Artificial Intelligence. Saya sangat menikmati setiap prosesnya mulai dari membersihkan, menganalisis, hingga memvisualisasikan data mentah menjadi wawasan (insight) yang indah dan berharga dengan memanfaatkan berbagai tools modern. Melalui perpaduan logika analitis dan kreativitas, saya selalu antusias untuk membantu mengambil keputusan yang lebih cerdas dan berdampak.",
+      quote: "Leveraging Data and AI to drive impactful decisions.",
+      stats: [
+        { label: "IPK / GPA", value: "3.8+" },
+        { label: "Proyek Analytics", value: "10+" },
+        { label: "Sertifikasi Resmi", value: "3+" },
+        { label: "Akurasi Model ML", value: "95%" }
+      ],
+      socials: {
+        linkedin: {
+          name: "LinkedIn",
+          username: "Maulidatun Nazwa",
+          displayUrl: "LinkedIn: Maulidatun-nazwa-214470245",
+          url: "https://www.linkedin.com/in/maulidatun-nazwa-214470245"
+        },
+        github: {
+          name: "GitHub",
+          username: "MaulidatunNazwa",
+          displayUrl: "github.com/MaulidatunNazwa",
+          url: "https://github.com/MaulidatunNazwa"
+        },
+        email: {
+          name: "Email",
+          username: "maulidatunnazwa19@gmail.com",
+          url: "mailto:maulidatunnazwa19@gmail.com"
+        },
+        whatsapp: {
+          name: "WhatsApp",
+          username: "+62 858-9125-9937",
+          displayUrl: "+62 858-9125-9937",
+          url: "https://wa.me/6285891259937"
+        }
+      }
+    };
+
+    // Distinct Data for Experience Section
+    const experienceData = [
+      {
+        id: "exp-menara",
+        title: "AI & Data Science Intern",
+        company: "PT Menara Indonesia",
+        period: "2025",
+        shortDesc: "Mengembangkan materi AI & Data Science, mendukung dokumentasi AI-Based Credit Scoring, dan mengimplementasikan machine learning industri.",
+        fullDesc: "Mengembangkan materi pembelajaran Artificial Intelligence dan Data Science, serta menyusun Standard Operating Procedure (SOP) sebagai dokumentasi proses kerja. Mendukung dokumentasi sistem AI-Based Credit Scoring dari tahap persiapan data hingga interpretasi hasil analisis, berkolaborasi dengan tim dalam analisis data, visualisasi data, dan penyusunan materi presentasi untuk stakeholder, serta menerapkan konsep machine learning secara langsung pada studi kasus industri.",
+        category: "Internship & Machine Learning",
+        image: "./assets/Experience Internship.jpg",
+        tags: ["Machine Learning", "Credit Scoring", "Python", "AI Models", "Data Analytics"],
+        demoUrl: "https://github.com",
+        features: [
+          "Mengembangkan materi pembelajaran Artificial Intelligence dan Data Science.",
+          "Menyusun Standard Operating Procedure (SOP) sebagai dokumentasi proses kerja.",
+          "Mendukung dokumentasi sistem AI-Based Credit Scoring, mulai dari tahap persiapan data hingga interpretasi hasil analisis.",
+          "Berkolaborasi dengan tim dalam melakukan analisis data, visualisasi data, dan penyusunan materi presentasi untuk stakeholder.",
+          "Menerapkan konsep machine learning secara langsung pada studi kasus industri."
+        ]
+      },
+      {
+        id: "exp-unas-fest",
+        title: "Department of Partnership (Divisi Bazaar)",
+        company: "UNAS FEST 2024",
+        period: "2024",
+        shortDesc: "Mengelola pendataan transaksi penjualan harian, melakukan rekapitulasi stok barang, serta merancang strategi visual pemasaran.",
+        fullDesc: "Mengelola data pre-order dan penjualan produk dari sponsor secara akurat serta menyusun laporan stok barang yang digunakan sebagai bahan evaluasi persediaan produk. Membantu penyusunan proposal kerja sama, adendum MoU, dan berkoordinasi dengan mitra sponsor terkait penyesuaian jumlah produk. Menginisiasi pembuatan akun Instagram Store sebagai media promosi resmi, mendesain berbagai konten promosi menggunakan Canva, dan berkolaborasi dalam menyusun strategi promosi untuk meningkatkan eksposur dan hasil penjualan produk sponsor.",
+        category: "Business Intelligence & Operation",
+        image: "./assets/Experience Organisasi.JPG",
+        tags: ["Google Sheets", "Inventory Tracking", "Business Intelligence", "Marketing Content"],
+        demoUrl: "https://github.com",
+        features: [
+          "Mengelola data pre-order dan penjualan produk dari sponsor secara akurat.",
+          "Menyusun laporan stok barang yang digunakan sebagai bahan evaluasi persediaan produk.",
+          "Membantu dalam penyusunan proposal kerja sama, adendum MoU, serta berkoordinasi dengan mitra sponsor terkait penyesuaian jumlah produk.",
+          "Menginisiasi pembuatan akun Instagram Store sebagai media promosi resmi guna memperluas jangkauan produk sponsor.",
+          "Mendesain berbagai konten promosi menggunakan Canva untuk mendukung upaya pemasaran digital.",
+          "Berkolaborasi dalam menyusun strategi promosi untuk meningkatkan eksposur dan hasil penjualan produk sponsor."
+        ]
+      }
+    ];
+
+    // Distinct Data for Projects Section
+    const projectsData = [
+      {
+        id: "google-loan-insights-dashboard",
+        title: "Loan Insights Dashboard (Looker)",
+        shortDesc: "Dashboard interaktif Looker untuk memantau status pinjaman belum lunas (outstanding loans), persebaran geografis, dan profil finansial nasabah.",
+        fullDesc: "Proyek ini merupakan bagian dari program pelatihan Google Skill Boost, berfokus pada pembuatan visualisasi data interaktif menggunakan Looker. Dashboard \"Loan Insights\" ini dirancang untuk memantau dan menganalisis status pinjaman yang belum lunas (**outstanding loans**), persebaran geografis nasabah, serta profil finansial nasabah berdasarkan tingkat pendapatan tahunan mereka.",
+        category: "Google Skill Boost",
+        image: "./assets/Project Google SkillBoost.jpg",
+        tags: ["Google Looker Studio", "Google Skill Boost", "KPI Dashboard", "Loan Insights", "Financial Analytics"],
+        demoUrl: "https://github.com/MaulidatunNazwa",
+        features: [
+          "Menampilkan metrik utama (KPI) untuk memantau **Total Amount of Outstanding Loans** secara **real-time**.",
+          "Memvisualisasikan persentase status pinjaman (**Current**, **Charged Off**, **Late**, **In Grace Period**, dll) menggunakan diagram lingkaran (**Pie Chart**).",
+          "Melakukan pemeringkatan jumlah pinjaman (**Total Count of Outstanding Loans**) berdasarkan distribusi geografis negara bagian (**State**).",
+          "Menyajikan rincian tabular untuk **Top 10 Customers** berdasarkan pendapatan tahunan tertinggi (**Highest Income**), lengkap dengan informasi suku bunga dan lokasi."
+        ]
+      },
+      {
+        id: "bnsp-electronics-sales-dashboard",
+        title: "Dashboard Penjualan Produk Elektronik di Indonesia",
+        shortDesc: "Dashboard interaktif untuk mengolah data mentah dan memantau performa penjualan produk elektronik di Indonesia demi memudahkan pengambilan keputusan.",
+        fullDesc: "Proyek ini disusun sebagai bagian dari pemenuhan uji kompetensi sertifikasi Data Analyst oleh BNSP. Tujuan dari proyek ini adalah mengolah data mentah menjadi sebuah dashboard interaktif yang dapat memudahkan pengambilan keputusan terkait performa penjualan produk elektronik di Indonesia.",
+        category: "Sertifikasi BNSP (Data Analyst)",
+        image: "./assets/Project BNSP.png",
+        tags: ["BNSP Sertifikasi", "Data Analyst", "Sales Analytics", "Customer Segmentation", "Dashboard Interaktif"],
+        demoUrl: "https://github.com/MaulidatunNazwa",
+        features: [
+          "Melacak tren penjualan dan volume transaksi bulanan.",
+          "Melakukan segmentasi pelanggan berdasarkan interaksi.",
+          "Pemeringkatan penjualan berdasarkan kategori produk dan wilayah di Indonesia."
+        ]
+      },
+      {
+        id: "air-quality-ispu-classification",
+        title: "Dashboard Analisis Komparasi Algoritma LightGBM dan CatBoost",
+        shortDesc: "Pengembangan & komparasi model LightGBM vs CatBoost dalam klasifikasi ISPU (Akurasi 99.16%) yang diimplementasikan dalam dashboard Streamlit.",
+        fullDesc: "Proyek ini berfokus pada pengembangan model analisis komparasi antara algoritma **LightGBM** dan **CatBoost** dalam klasifikasi kualitas udara. Tujuannya adalah untuk menentukan pemodelan terbaik dengan performa tertinggi dalam memprediksi Indeks Standar Pencemar Udara (ISPU). Hasil dari pemodelan ini kemudian diimplementasikan ke dalam sebuah dashboard interaktif menggunakan **Streamlit** untuk memudahkan pemantauan dan evaluasi data.",
+        category: "Analisis Kualitas Udara & Klasifikasi ISPU",
+        image: "./assets/Project Skripsi.jpg",
+        tags: ["LightGBM", "CatBoost", "Streamlit", "ISPU Classification", "Machine Learning"],
+        demoUrl: "https://github.com/MaulidatunNazwa",
+        features: [
+          "Filter Data Dinamis: Memungkinkan pengguna untuk menyaring data berdasarkan pilihan model prediksi (CatBoost/LightGBM), rentang tahun observasi, dan kategori prediksi secara **real-time**.",
+          "Evaluasi Performa Model: Menampilkan metrik utama evaluasi secara langsung, termasuk tingkat Akurasi Model (mencapai **99.16%**) dan skor F1 Macro.",
+          "Visualisasi Ringkasan Prediksi: Menyajikan grafik interaktif berupa **Donut Chart** untuk proporsi kategori prediksi (Sedang, Baik, Tidak Sehat, Sangat Tidak Sehat) dan **Bar Chart** untuk melihat distribusi jumlah prediksi.",
+          "Pemantauan Kondisi Kritis: Menampilkan kalkulasi otomatis untuk menghitung total akumulasi hari dengan kategori ISPU \"Tidak Sehat\"."
+        ]
+      }
+    ];
+
+    const certificatesData = [
+      {
+        id: "cert-bnsp-pdf",
+        title: "Sertifikat Kompetensi BNSP - Data Analyst",
+        issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
+        date: "2025",
+        credentialId: "BNSP Data Analyst",
+        image: "./assets/Sertifikat BNSP.pdf",
+        fileUrl: "./assets/Sertifikat BNSP.pdf",
+        description: "Sertifikasi kompetensi kerja nasional bidang Data Analyst dari Badan Nasional Sertifikasi Profesi (BNSP)."
+      },
+      {
+        id: "cert-bi-colab-python",
+        title: "Sertifikat Business Intelligence & Python Analytics",
+        issuer: "Google Colab & Python Analytics Program",
+        date: "2024",
+        credentialId: "BI-PYTHON-COLAB",
+        image: "./assets/Sertifikat Peningkatan Business Intelligence Menggunakan Platform Google Colab dengan Bahasa Python.pdf",
+        fileUrl: "./assets/Sertifikat Peningkatan Business Intelligence Menggunakan Platform Google Colab dengan Bahasa Python.pdf",
+        description: "Sertifikat peningkatan kompetensi Business Intelligence menggunakan platform Google Colab dan bahasa pemrograman Python."
+      },
+      {
+        id: "cert-certiport",
+        title: "Information Technology Specialist (ITS) - Certiport",
+        issuer: "Certiport (Pearson VUE)",
+        date: "2024",
+        credentialId: "Certiport ITS",
+        image: "./assets/CERTIPORT.pdf",
+        fileUrl: "./assets/CERTIPORT.pdf",
+        description: "Sertifikasi resmi standar internasional dari Certiport dalam bidang Teknologi Informasi & Data Analytics."
+      },
+      {
+        id: "cert-gcp-genai",
+        title: "Google Cloud Career Launchpad - Generative AI Track",
+        issuer: "Google Cloud",
+        date: "2024",
+        credentialId: "Google Cloud GenAI",
+        image: "./assets/Sertifikat Google Cloud Career Launchpad Generative AI track.pdf",
+        fileUrl: "./assets/Sertifikat Google Cloud Career Launchpad Generative AI track.pdf",
+        description: "Sertifikasi penyelesaian program Google Cloud Career Launchpad khusus bidang Generative AI dan Cloud Data Solutions."
+      },
+      {
+        id: "cert-magang-kg",
+        title: "Sertifikat Magang AI & Data Science Intern",
+        issuer: "PT Menara Indonesia / Kampus Gratis",
+        date: "2025",
+        credentialId: "PT Menara Indonesia",
+        image: "./assets/Sertifikat Magang Kampus Gratis .png",
+        fileUrl: "./assets/Sertifikat Magang Kampus Gratis .png",
+        description: "Sertifikat resmi kelulusan & apresiasi penyelesaian program magang AI & Data Science di PT Menara Indonesia."
+      },
+      {
+        id: "cert-pelatihan-ds",
+        title: "Sertifikat Pelatihan Dasar Data Science",
+        issuer: "Data Science Training & Certification",
+        date: "2024",
+        credentialId: "Pelatihan Data Science",
+        image: "./assets/Sertifikat Pelatihan Dasar Data Science.pdf",
+        fileUrl: "./assets/Sertifikat Pelatihan Dasar Data Science.pdf",
+        description: "Sertifikat kelulusan pelatihan komprehensif dasar Data Science, olah data, manipulasi dataset, dan visualisasi."
+      },
+      {
+        id: "cert-unas-fest-panitia",
+        title: "Sertifikat Panitia UNAS FEST 2024 (Partnership)",
+        issuer: "Universitas Nasional",
+        date: "2024",
+        credentialId: "Panitia UNAS FEST 2024",
+        image: "./assets/Sertifikat Panitia Unas Fest.jpeg",
+        fileUrl: "./assets/Sertifikat Panitia Unas Fest.jpeg",
+        description: "Sertifikat penghargaan kepanitiaan UNAS FEST 2024 Department of Partnership Divisi Bazaar."
+      },
+      {
+        id: "cert-toefl-ftki",
+        title: "Sertifikat English Proficiency Test (TOEFL FTKI)",
+        issuer: "FTKI Universitas Nasional",
+        date: "2024",
+        credentialId: "TOEFL FTKI UNAS",
+        image: "./assets/Sertifikat TOEFL FTKI.pdf",
+        fileUrl: "./assets/Sertifikat TOEFL FTKI.pdf",
+        description: "Sertifikat resmi uji kemahiran Bahasa Inggris TOEFL dari Fakultas Teknologi Komunikasi dan Informatika UNAS."
+      },
+      {
+        id: "cert-unas-fest-is",
+        title: "Sertifikat Panitia International Seminar - UNAS FEST 2024",
+        issuer: "UNAS FEST 2024 (International Seminar)",
+        date: "2024",
+        credentialId: "UNASFEST-INT-SEMINAR-PANITIA",
+        image: "./assets/Sertifikat Unas Fest IS.png",
+        fileUrl: "./assets/Sertifikat Unas Fest IS.png",
+        description: "Sertifikat penghargaan sebagai panitia atas kontribusi dan kelancaran pelaksanaan gelaran International Seminar UNAS FEST 2024."
+      }
+    ];
+
+    // Explicit User Tech Stack Items Grouped By Levels
+    const techStackData = [
+      // --- ADVANCED LEVEL ---
+      { name: "Power BI", category: "BI & Data Visualization", level: "Advanced", levelPercent: 95, icon: "bar-chart-3" },
+      { name: "Microsoft Office", category: "Productivity & Office", level: "Advanced", levelPercent: 95, icon: "file-text" },
+      { name: "Google Workspace", category: "Collaboration Tools", level: "Advanced", levelPercent: 90, icon: "globe" },
+      { name: "Canva", category: "Graphic Design", level: "Advanced", levelPercent: 90, icon: "palette" },
+
+      // --- INTERMEDIATE LEVEL ---
+      { name: "SQL (MySQL)", category: "Database & Querying", level: "Intermediate", levelPercent: 80, icon: "database" },
+      { name: "Python (Pandas, NumPy, Scikit-learn)", category: "Data Science & Analytics", level: "Intermediate", levelPercent: 82, icon: "code" },
+      { name: "Microsoft Excel", category: "Spreadsheet Analytics", level: "Intermediate", levelPercent: 85, icon: "table" },
+      { name: "Tableau", category: "BI & Dashboards", level: "Intermediate", levelPercent: 78, icon: "pie-chart" },
+      { name: "Google Looker Studio", category: "BI & Cloud Reporting", level: "Intermediate", levelPercent: 78, icon: "layout-dashboard" },
+      { name: "QGIS", category: "GIS & Spatial Analytics", level: "Intermediate", levelPercent: 72, icon: "map-pin" },
+
+      // --- BEGINNER LEVEL ---
+      { name: "Machine Learning", category: "AI & Predictive Models", level: "Beginner", levelPercent: 55, icon: "cpu" },
+      { name: "HTML & CSS", category: "Web Core", level: "Beginner", levelPercent: 60, icon: "layout" },
+      { name: "PHP", category: "Backend Web", level: "Beginner", levelPercent: 50, icon: "file-code" },
+      { name: "JavaScript", category: "Web Development", level: "Beginner", levelPercent: 55, icon: "code" },
+      { name: "Git & GitHub", category: "Version Control", level: "Beginner", levelPercent: 60, icon: "github" },
+      { name: "Figma", category: "UI/UX Design", level: "Beginner", levelPercent: 55, icon: "figma" },
+      { name: "Adobe Photoshop", category: "Media Editing", level: "Beginner", levelPercent: 50, icon: "image" },
+      { name: "Adobe Illustrator", category: "Vector Graphics", level: "Beginner", levelPercent: 50, icon: "pen-tool" }
+    ];
+
+    // --- MODALS ---
+    function renderText(text) {
+      if (!text) return null;
+      const regex = /(\*\*.*?\*\*|\*.*?\*)/g;
+      const parts = text.split(regex);
+      return parts.map((part, i) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return <strong key={i} className="text-white font-bold">{part.slice(2, -2)}</strong>;
+        }
+        if (part.startsWith('*') && part.endsWith('*')) {
+          return <strong key={i} className="text-white font-bold">{part.slice(1, -1)}</strong>;
+        }
+        return part;
+      });
+    }
+
+    function ProjectModal({ project, isOpen, onClose }) {
+      if (!isOpen || !project) return null;
+
+      return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0B0E]/85 backdrop-blur-md">
+          <div className="relative w-full max-w-2xl max-h-[90vh] rounded-3xl bg-[#1A1218] border border-[#5C1B33] p-6 sm:p-8 space-y-6 shadow-2xl overflow-y-auto">
+
+            {/* Header */}
+            <div className="flex items-center justify-between border-b border-[#5C1B33] pb-4">
+              <span className="px-3.5 py-1 rounded-full bg-[#241520] border border-[#E63974]/30 text-[#E63974] text-xs font-bold uppercase tracking-wider">
+                {project.category}
+              </span>
+              <button
+                onClick={onClose}
+                className="p-2 rounded-full bg-[#241520] border border-[#5C1B33] text-[#B8A3B0] hover:text-white transition-colors"
+              >
+                <Icon name="x" className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Project Image */}
+            <div className="relative h-52 sm:h-60 rounded-2xl overflow-hidden border border-[#5C1B33] bg-[#0B0B0E] shadow-inner">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80";
+                }}
+              />
+            </div>
+
+            {/* Project Title */}
+            <div>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+                {project.title}
+              </h3>
+            </div>
+
+            {/* Deskripsi Proyek Section */}
+            <div className="space-y-2 pt-1">
+              <h4 className="text-sm sm:text-base font-extrabold text-white tracking-wide">
+                Deskripsi Proyek
+              </h4>
+              <p className="text-xs sm:text-sm text-[#B8A3B0] leading-relaxed font-normal">
+                {renderText(project.fullDesc || project.shortDesc)}
+              </p>
+            </div>
+
+            {/* Fitur & Analisis Utama Section */}
+            {project.features && project.features.length > 0 && (
+              <div className="space-y-3 pt-2">
+                <h4 className="text-sm sm:text-base font-extrabold text-white tracking-wide">
+                  Fitur & Analisis Utama
+                </h4>
+                <ul className="space-y-2.5">
+                  {project.features.map((featureText, i) => {
+                    const colonIndex = featureText.indexOf(':');
+                    if (colonIndex !== -1) {
+                      const titlePart = featureText.slice(0, colonIndex + 1);
+                      const bodyPart = featureText.slice(colonIndex + 1);
+                      return (
+                        <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#B8A3B0] leading-relaxed">
+                          <span className="text-[#E63974] font-bold text-base leading-none mt-0.5">•</span>
+                          <span>
+                            <strong className="text-white font-bold">{renderText(titlePart)}</strong>
+                            {renderText(bodyPart)}
+                          </span>
+                        </li>
+                      );
+                    }
+                    return (
+                      <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#B8A3B0] leading-relaxed">
+                        <span className="text-[#E63974] font-bold text-base leading-none mt-0.5">•</span>
+                        <span>{renderText(featureText)}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 pt-2">
+              {project.tags.map((tag, i) => (
+                <span key={i} className="px-3 py-1 rounded-full bg-[#241520] border border-[#5C1B33] text-xs font-mono text-[#E63974]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Footer Actions */}
+            <div className="flex items-center justify-end pt-4 border-t border-[#5C1B33]">
+              <button
+                onClick={onClose}
+                className="px-7 py-2.5 rounded-full bg-[#E63974] hover:bg-[#F44380] text-[#0B0B0E] text-xs font-extrabold shadow-lg shadow-pink-950/50 transition-all"
+              >
+                Tutup
+              </button>
+            </div>
+
+          </div>
+        </div>
+      );
+    }
+
+    function CertificateModal({ certificate, isOpen, onClose }) {
+      if (!isOpen || !certificate) return null;
+
+      const certImg = certificate.image || './assets/cert-bnsp.png';
+      const isPdf = certImg.toLowerCase().endsWith('.pdf');
+
+      return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0B0E]/80 backdrop-blur-md">
+          <div className="relative w-full max-w-2xl max-h-[90vh] rounded-3xl bg-[#1A1218] border border-[#5C1B33] p-6 space-y-4 shadow-2xl overflow-y-auto">
+            <div className="flex justify-between items-center border-b border-[#5C1B33] pb-3">
+              <span className="text-xs font-bold text-[#E63974] flex items-center gap-1"><Icon name="shield-check" className="text-[#E63974]" /> Dokumen Sertifikat Resmi</span>
+              <button onClick={onClose} className="p-1 rounded-full bg-[#241520] text-[#B8A3B0] hover:text-white"><Icon name="x" /></button>
+            </div>
+
+            {/* Certificate Preview Image or PDF Viewer */}
+            <div className="relative group rounded-2xl overflow-hidden border border-[#5C1B33] bg-[#0B0B0E] shadow-inner flex items-center justify-center min-h-[220px]">
+              {isPdf ? (
+                <div className="w-full space-y-3 p-2 text-center">
+                  <iframe src={certImg} title={certificate.title} className="w-full h-72 sm:h-96 rounded-xl border border-[#5C1B33] bg-[#0B0B0E]" />
+                  <div className="flex justify-center">
+                    <a href={certImg} target="_blank" rel="noreferrer" className="px-5 py-2 rounded-full bg-[#E63974] text-[#0B0B0E] text-xs font-bold flex items-center gap-1.5 shadow-md">
+                      <Icon name="external-link" /> Buka PDF di Tab Baru / Fullscreen
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <img src={certImg} alt={certificate.title} className="w-full max-h-[350px] object-contain p-2 rounded-2xl" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&w=800&q=80"; }} />
+                  <div className="absolute inset-0 bg-[#0B0B0E]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                    <a href={certImg} target="_blank" className="px-5 py-2.5 rounded-full bg-[#E63974] text-[#0B0B0E] text-xs font-bold flex items-center gap-1.5 shadow-md">
+                      <Icon name="external-link" /> Buka Ukuran Penuh
+                    </a>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div className="text-center space-y-1">
+              <h3 className="text-xl font-bold text-white">{certificate.title}</h3>
+              <p className="text-xs text-[#E63974] font-mono font-medium">{certificate.issuer} • {certificate.date}</p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#0B0B0E] border border-[#5C1B33] text-xs text-white space-y-2 text-left shadow-sm">
+              <div><span className="text-[#B8A3B0]">ID Kredensial: </span><span className="text-[#E63974] font-mono font-bold">{certificate.credentialId}</span></div>
+              <p className="text-[#B8A3B0]">{certificate.description}</p>
+            </div>
+
+            <div className="flex justify-between items-center pt-2 border-t border-[#5C1B33]">
+              <button onClick={onClose} className="px-6 py-2.5 rounded-full bg-[#241520] text-xs font-bold text-white hover:bg-[#3D1E30] transition-colors">Tutup</button>
+              <a href={certImg} download={`${certificate.id}.png`} target="_blank" className="px-6 py-2.5 rounded-full bg-[#E63974] hover:bg-[#F44380] text-xs font-bold text-[#0B0B0E] shadow-md flex items-center gap-1.5 transition-all">
+                <Icon name="download" /> Unduh Dokumen
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    function CVModal({ isOpen, onClose }) {
+      if (!isOpen) return null;
+      const handleDownload = () => {
+        const a = document.createElement('a');
+        a.href = './assets/CV_Maulidatun_Nazwa.pdf';
+        a.download = 'CV_Maulidatun_Nazwa.pdf';
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      };
+      return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0B0E]/80 backdrop-blur-md">
+          <div className="relative w-full max-w-lg rounded-3xl bg-[#1A1218] border border-[#5C1B33] p-6 space-y-4 shadow-2xl">
+            <div className="flex justify-between items-center border-b border-[#5C1B33] pb-3">
+              <span className="text-xs font-bold text-[#E63974]">Curriculum Vitae (PDF)</span>
+              <button onClick={onClose} className="p-1 rounded-full bg-[#241520] text-[#B8A3B0] hover:text-white"><Icon name="x" /></button>
+            </div>
+            <div className="p-5 rounded-2xl bg-[#0B0B0E] border border-[#5C1B33] text-xs space-y-2 shadow-sm">
+              <h4 className="text-xl font-bold text-white">{personalData.name}</h4>
+              <p className="text-[#E63974] font-mono font-semibold">{personalData.title}</p>
+              <p className="text-[#B8A3B0] leading-relaxed">{personalData.aboutBio}</p>
+              <div className="pt-2 text-[#E63974] text-xs font-bold flex items-center gap-1">
+                <Icon name="file-text" className="w-3.5 h-3.5" /> Dokumen Asli PDF Siap Diunduh
+              </div>
+            </div>
+            <div className="flex justify-between items-center pt-2">
+              <button onClick={onClose} className="px-6 py-2.5 rounded-full bg-[#241520] text-xs font-bold text-white">Tutup</button>
+              <button onClick={handleDownload} className="px-7 py-2.5 rounded-full bg-[#E63974] hover:bg-[#F44380] text-xs font-bold text-[#0B0B0E] shadow-md flex items-center gap-2">
+                <Icon name="download" className="w-3.5 h-3.5" /> Unduh PDF CV
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // --- PRE-LOADER / SPLASH SCREEN ---
+    function Preloader() {
+      const [progress, setProgress] = useState(0);
+      const [isExiting, setIsExiting] = useState(false);
+      const [isFinished, setIsFinished] = useState(false);
+
+      useEffect(() => {
+        const interval = setInterval(() => {
+          setProgress((prev) => {
+            if (prev >= 100) {
+              clearInterval(interval);
+              return 100;
+            }
+            return prev + 4;
+          });
+        }, 80);
+
+        return () => clearInterval(interval);
+      }, []);
+
+      useEffect(() => {
+        if (progress >= 100) {
+          const exitTimer = setTimeout(() => setIsExiting(true), 200);
+          const finishTimer = setTimeout(() => setIsFinished(true), 900);
+          return () => {
+            clearTimeout(exitTimer);
+            clearTimeout(finishTimer);
+          };
+        }
+      }, [progress]);
+
+      if (isFinished) return null;
+
+      return (
+        <div
+          className={`fixed inset-0 z-50 bg-[#0B0B0E] flex flex-col items-center justify-center p-6 transition-all duration-700 ease-in-out ${isExiting ? '-translate-y-full opacity-0 pointer-events-none' : 'translate-y-0 opacity-100'
+            }`}
+        >
+          {/* Ambient Orbs */}
+          <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-[#E63974]/20 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-[#389BE8]/20 rounded-full blur-[140px] pointer-events-none" />
+
+          {/* Centered Content */}
+          <div className="relative z-10 flex flex-col items-center text-center space-y-6 max-w-sm w-full">
+
+            {/* Initial Badge */}
+            <div className="relative">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#1A1218] border-2 border-[#E63974]/60 shadow-2xl p-2 flex flex-col items-center justify-center backdrop-blur-sm">
+                <div className="w-full h-full rounded-full bg-[#0B0B0E] flex flex-col items-center justify-center border border-[#E63974]/40">
+                  <span className="text-3xl sm:text-4xl font-extrabold tracking-widest font-mono text-[#E63974]">
+                    MN
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Title */}
+            <div className="space-y-1">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight flex items-center justify-center gap-2">
+                <span>Maulidatun Nazwa</span>
+                <Icon name="sparkles" className="w-4 h-4 text-[#E63974]" />
+              </h2>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="w-56 sm:w-64 space-y-2 pt-2">
+              <div className="w-full h-2 rounded-full bg-[#241520] overflow-hidden p-0.5 shadow-inner">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-[#E63974] via-[#FF70A6] to-[#F5D647] transition-all duration-200 ease-out"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+
+              <div className="flex justify-between items-center text-[10px] font-mono text-[#B8A3B0]">
+                <span className="text-[#E63974] font-semibold">Loading ...</span>
+                <span className="font-bold text-[#E63974]">{progress}%</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      );
+    }
+
+    // --- STARFIELD BACKGROUND ---
+    function StarfieldBackground() {
+      const stars = React.useMemo(() => {
+        const starList = [];
+        const colors = ['#E63974', '#389BE8', '#F5D647', '#F4F0EA', '#FF70A6'];
+        for (let i = 0; i < 85; i++) {
+          const top = Math.floor(Math.abs(Math.sin(i * 997 + 1)) * 100);
+          const left = Math.floor(Math.abs(Math.cos(i * 7919 + 1)) * 100);
+          const size = (i % 4 === 0) ? 3 : (i % 2 === 0) ? 2 : 1.5;
+          const duration = (2.0 + (i % 6) * 0.7).toFixed(1);
+          const delay = ((i % 8) * 0.4).toFixed(1);
+          const color = colors[i % colors.length];
+          const opacity = (0.35 + (i % 4) * 0.15).toFixed(2);
+
+          starList.push({
+            id: i,
+            top: `${top}%`,
+            left: `${left}%`,
+            width: `${size}px`,
+            height: `${size}px`,
+            color,
+            opacity,
+            duration: `${duration}s`,
+            delay: `${delay}s`,
+            isSparkle: i % 10 === 0
+          });
+        }
+        return starList;
+      }, []);
+
+      return (
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none">
+          {stars.map((star) => (
+            star.isSparkle ? (
+              <svg
+                key={star.id}
+                className="absolute animate-twinkle"
+                style={{
+                  top: star.top,
+                  left: star.left,
+                  width: '12px',
+                  height: '12px',
+                  color: star.color,
+                  opacity: star.opacity,
+                  animationDuration: star.duration,
+                  animationDelay: star.delay,
+                }}
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
+              </svg>
+            ) : (
+              <div
+                key={star.id}
+                className="absolute rounded-full animate-twinkle"
+                style={{
+                  top: star.top,
+                  left: star.left,
+                  width: star.width,
+                  height: star.height,
+                  backgroundColor: star.color,
+                  boxShadow: `0 0 6px ${star.color}`,
+                  opacity: star.opacity,
+                  animationDuration: star.duration,
+                  animationDelay: star.delay,
+                }}
+              />
+            )
+          ))}
+        </div>
+      );
+    }
+
+    // --- MAIN NAZWA APP ---
+    function App() {
+      const [activeSection, setActiveSection] = useState('home');
+      const [mobileMenu, setMobileMenu] = useState(false);
+      const [typeIndex, setTypeIndex] = useState(0);
+      const [typeText, setTypeText] = useState('');
+      const [isDeleting, setIsDeleting] = useState(false);
+      const [activeTab, setActiveTab] = useState('experience');
+      const [selectedItem, setSelectedItem] = useState(null);
+      const [selectedCert, setSelectedCert] = useState(null);
+      const [cvOpen, setCvOpen] = useState(false);
+      const [techFilter, setTechFilter] = useState('All');
+      const [isFlipped, setIsFlipped] = useState(false);
+
+      // Group tech items by level
+      const advancedTech = techStackData.filter(item => item.level === 'Advanced');
+      const intermediateTech = techStackData.filter(item => item.level === 'Intermediate');
+      const beginnerTech = techStackData.filter(item => item.level === 'Beginner');
+
+      // Typewriter Effect
+      useEffect(() => {
+        const roles = personalData.roles;
+        const currentRole = roles[typeIndex];
+        const speed = isDeleting ? 40 : 80;
+
+        const timer = setTimeout(() => {
+          if (!isDeleting) {
+            setTypeText(currentRole.substring(0, typeText.length + 1));
+            if (typeText === currentRole) setTimeout(() => setIsDeleting(true), 1800);
+          } else {
+            setTypeText(currentRole.substring(0, typeText.length - 1));
+            if (typeText === '') {
+              setIsDeleting(false);
+              setTypeIndex((prev) => (prev + 1) % roles.length);
+            }
+          }
+        }, speed);
+        return () => clearTimeout(timer);
+      }, [typeText, isDeleting, typeIndex]);
+
+      return (
+        <div className="min-h-screen bg-gradient-to-b from-[#0B0B0E] via-[#181016] to-[#0B0B0E] text-[#F4F0EA] relative">
+          <Preloader />
+          <StarfieldBackground />
+
+          {/* FLOATING PILL NAVBAR */}
+          <header className="fixed top-4 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-5xl transition-all duration-300">
+            <div className="rounded-full bg-[#1A1218]/90 backdrop-blur-xl border border-[#5C1B33] shadow-2xl px-5 sm:px-7 py-3 flex items-center justify-between">
+              <a href="#home" className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-full bg-[#241520] border border-[#E63974]/40 flex items-center justify-center text-[#E63974]">
+                  <Icon name="bar-chart-2" />
+                </div>
+                <span className="text-lg font-bold tracking-tight text-white">Nazwa<span className="text-[#E63974] font-mono text-xs font-semibold">.&lt;analytics/&gt;</span></span>
+              </a>
+
+              {/* Desktop Nav Pills */}
+              <nav className="hidden md:flex items-center gap-1 bg-[#0B0B0E]/80 p-1.5 rounded-full border border-[#5C1B33]">
+                {['Home', 'About', 'Portfolio', 'Contact'].map(item => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={() => setActiveSection(item.toLowerCase())}
+                    className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all ${activeSection === item.toLowerCase()
+                      ? 'bg-[#E63974] text-[#0B0B0E] shadow-md font-bold'
+                      : 'text-[#B8A3B0] hover:text-white'
+                      }`}
+                  >
+                    {item}
+                  </a>
+                ))}
+              </nav>
+
+              <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden p-2 rounded-full bg-[#241520] text-white">
+                <Icon name={mobileMenu ? "x" : "menu"} />
+              </button>
+            </div>
+
+            {/* Mobile Menu */}
+            {mobileMenu && (
+              <div className="mt-2 rounded-3xl bg-[#1A1218]/95 border border-[#5C1B33] backdrop-blur-2xl p-4 shadow-xl space-y-2">
+                {['Home', 'About', 'Portfolio', 'Contact'].map(item => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={() => { setActiveSection(item.toLowerCase()); setMobileMenu(false); }}
+                    className="block px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#241520] rounded-full"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+            )}
+          </header>
+
+          {/* 1. HERO SECTION */}
+          <section id="home" className="pt-36 pb-20 px-4 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 space-y-5 text-center lg:text-left">
+              {/* Top Welcome Pill with Glowing Animation */}
+              <div className="relative inline-flex group cursor-pointer">
+                {/* Animated Glowing Aura Ring */}
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#E63974] via-[#389BE8] to-[#F5D647] opacity-75 blur-md group-hover:opacity-100 transition duration-500 animate-pulse" />
+
+                {/* Main Pill Badge Container */}
+                <div className="relative inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#1A1218]/90 border border-[#E63974]/50 text-xs font-extrabold uppercase tracking-wider text-[#E63974] shadow-xl backdrop-blur-xl group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                  {/* Shimmer Light Streak */}
+                  <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden rounded-full">
+                    <div className="w-20 h-[200%] bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer-sweep" />
+                  </div>
+
+                  {/* Rotating Sparkles Icon */}
+                  <Icon name="sparkles" className="w-4 h-4 text-[#E63974] animate-[spin_4s_linear_infinite] shrink-0" />
+                  <span className="bg-gradient-to-r from-[#E63974] via-[#FF70A6] to-[#F5D647] bg-clip-text text-transparent font-extrabold">
+                    Welcome To My Portfolio
+                  </span>
+                </div>
+              </div>
+
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                Hi, I'm <span className="bg-gradient-to-r from-[#E63974] via-[#FF70A6] to-[#F5D647] bg-clip-text text-transparent font-extrabold">{personalData.name}</span>
+              </h1>
+
+              <div className="text-lg sm:text-2xl font-mono font-bold text-[#E63974] flex items-center justify-center lg:justify-start gap-2 min-h-[36px]">
+                <Icon name="terminal" className="text-[#389BE8]" />
+                <span>{typeText}</span>
+                <span className="w-2.5 h-5 bg-[#E63974] animate-blink inline-block rounded-sm" />
+              </div>
+
+              <p className="text-[#B8A3B0] text-sm sm:text-base max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                {personalData.heroDescription}
+              </p>
+
+              {/* Dual Action Pill Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                <a href="#portfolio" className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#E63974] to-[#C22357] hover:from-[#F44380] hover:to-[#E63974] text-[#0B0B0E] font-bold text-sm shadow-lg shadow-pink-950/50 flex items-center justify-center gap-2">
+                  <span>Projects</span>
+                  <Icon name="arrow-right" />
+                </a>
+                <a href="#contact" className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#1A1218] border-2 border-[#E63974] text-[#E63974] hover:bg-[#241520] font-bold text-sm shadow-md flex items-center justify-center gap-2">
+                  <Icon name="mail" className="text-[#E63974]" />
+                  <span>Contact</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Bouncing Minimalist Outline Data Graphic */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="w-full max-w-md rounded-3xl bg-[#1A1218]/90 border border-[#5C1B33] p-6 font-mono text-xs shadow-2xl space-y-4 animate-float-bounce backdrop-blur-md">
+                <div className="flex items-center gap-2 border-b border-[#5C1B33] pb-3">
+                  <div className="w-3 h-3 rounded-full bg-[#E63974]" />
+                  <div className="w-3 h-3 rounded-full bg-[#F5D647]" />
+                  <div className="w-3 h-3 rounded-full bg-[#389BE8]" />
+                  <span className="text-[#B8A3B0] ml-auto">DataPipeline.py</span>
+                </div>
+                <div className="text-white space-y-1.5 bg-[#0B0B0E] p-4 rounded-2xl border border-[#5C1B33]">
+                  <div><span className="text-[#E63974] font-bold">import</span> pandas <span className="text-[#E63974] font-bold">as</span> pd</div>
+                  <div><span className="text-[#E63974] font-bold">import</span> sklearn.ensemble <span className="text-[#E63974] font-bold">as</span> ml</div>
+                  <div className="text-[#876579] italic"># Transform raw data into insights</div>
+                  <div>df = pd.<span className="text-[#389BE8]">read_sql</span>(<span className="text-[#F5D647]">'SELECT * FROM business_data'</span>)</div>
+                  <div>model = ml.<span className="text-[#389BE8]">CatBoostClassifier</span>()</div>
+                  <div>insights = model.<span className="text-[#E63974]">generate_impact</span>(df)</div>
+                </div>
+                <div className="p-3 bg-[#241520] rounded-2xl flex justify-around items-center border border-[#5C1B33]">
+                  <div className="text-center"><Icon name="line-chart" className="text-[#E63974]" /><div className="text-[10px] text-white font-semibold">Predictive AI</div></div>
+                  <div className="text-center"><Icon name="pie-chart" className="text-[#389BE8]" /><div className="text-[10px] text-white font-semibold">BI Analytics</div></div>
+                  <div className="text-center"><Icon name="database" className="text-[#F5D647]" /><div className="text-[10px] text-white font-semibold">SQL Mining</div></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 2. ABOUT ME SECTION */}
+          <section id="about" className="py-24 bg-gradient-to-b from-[#0B0B0E] via-[#181016] to-[#0B0B0E] border-t border-[#5C1B33]/60 px-4">
+            <div className="max-w-7xl mx-auto space-y-12">
+
+              {/* Section Header */}
+              <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1A1218] border border-[#5C1B33] text-[#E63974] text-xs font-bold uppercase tracking-wider shadow-md">
+                  <Icon name="sparkles" className="w-3.5 h-3.5 text-[#E63974]" />
+                  <span>ABOUT ME</span>
+                </div>
+
+                {/* Main H2 Title */}
+                <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-snug">
+                  {personalData.aboutTagline}
+                </h2>
+
+                <div className="w-24 h-1.5 bg-gradient-to-r from-[#E63974] to-[#389BE8] mx-auto rounded-full mt-3 shadow-md" />
+              </div>
+
+              {/* Main White Outline Glassmorphism Card Container (Enclosing both Photo & Text) */}
+              <div className="border border-white/50 rounded-3xl md:rounded-[2rem] p-6 sm:p-8 md:p-12 backdrop-blur-sm bg-white/5 shadow-2xl shadow-white/5 transition-all duration-300 hover:border-white/70">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+                  {/* Left Column: 3D FLIPPABLE PERFECT CIRCLE Frame Profile Photo */}
+                  <div className="lg:col-span-5 flex flex-col items-center justify-center">
+                    <div
+                      onClick={() => setIsFlipped(!isFlipped)}
+                      className="relative group cursor-pointer"
+                      style={{ perspective: '1000px' }}
+                      title="Klik foto untuk memutar"
+                    >
+                      {/* Outer Glowing Aura Ring */}
+                      <div className="absolute -inset-3 rounded-full bg-gradient-to-tr from-white/40 via-[#E63974] to-[#389BE8] opacity-80 blur-lg animate-shining-glow transition duration-500" />
+
+                      {/* 3D Flippable Frame Container with Glowing White Outline */}
+                      <div
+                        className="relative w-60 h-60 sm:w-72 sm:h-72 rounded-full border-4 border-white/80 shadow-[0_0_30px_rgba(255,255,255,0.3)] shadow-pink-950/50 flex items-center justify-center bg-[#1A1218] transition-transform duration-700"
+                        style={{
+                          transformStyle: 'preserve-3d',
+                          WebkitTransformStyle: 'preserve-3d',
+                          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                          WebkitTransform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                        }}
+                      >
+                        {/* Glossy Shimmer Sweep Effect */}
+                        <div className="absolute inset-0 z-30 pointer-events-none overflow-hidden rounded-full">
+                          <div className="w-28 h-[200%] bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer-sweep" />
+                        </div>
+
+                        {/* Photo 1 (Front: profile-nazwa.png) */}
+                        <div
+                          className="absolute inset-0 w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-[#0B0B0E]"
+                          style={{
+                            backfaceVisibility: 'hidden',
+                            WebkitBackfaceVisibility: 'hidden',
+                            transform: 'rotateY(0deg)',
+                            WebkitTransform: 'rotateY(0deg)',
+                            zIndex: isFlipped ? 1 : 2
+                          }}
+                        >
+                          <img src="./assets/profile-nazwa.png" alt="Maulidatun Nazwa - Photo 1" className="w-full h-full object-cover object-center rounded-full" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"; }} />
+                        </div>
+
+                        {/* Photo 2 (Back: profile-nazwa-2.jpg) */}
+                        <div
+                          className="absolute inset-0 w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-[#0B0B0E]"
+                          style={{
+                            backfaceVisibility: 'hidden',
+                            WebkitBackfaceVisibility: 'hidden',
+                            transform: 'rotateY(180deg)',
+                            WebkitTransform: 'rotateY(180deg)',
+                            zIndex: isFlipped ? 2 : 1
+                          }}
+                        >
+                          <img src="./assets/profile-nazwa-2.jpg" alt="Maulidatun Nazwa - Photo 2" className="w-full h-full object-cover object-center rounded-full" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"; }} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Bio Text & Actions */}
+                  <div className="lg:col-span-7 space-y-6 text-white">
+                    {/* Greeting Heading (Starts directly here) */}
+                    <h3 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
+                      Hello, I'm <span className="bg-gradient-to-r from-[#E63974] via-[#FF70A6] to-[#F5D647] bg-clip-text text-transparent font-extrabold">Maulidatun Nazwa</span>
+                    </h3>
+
+                    <p className="text-base sm:text-lg leading-relaxed text-[#F4F0EA]/90 font-normal">
+                      {personalData.aboutBio}
+                    </p>
+
+                    <div className="p-6 rounded-2xl bg-white/5 border-l-4 border-white/70 border-t border-r border-b border-white/20 shadow-xl text-pink-50 font-semibold italic text-base sm:text-lg backdrop-blur-md">
+                      "{personalData.quote}"
+                    </div>
+
+                    {/* Action Buttons - Centered */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                      <button onClick={() => setCvOpen(true)} className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#E63974] to-[#C22357] hover:from-[#F44380] hover:to-[#E63974] text-[#0B0B0E] font-bold text-base shadow-lg shadow-pink-950/40 transition-all duration-300">
+                        <Icon name="file-text" /> <span>Download CV</span>
+                      </button>
+                      <a href="#portfolio" className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-white/10 border border-white/40 text-white hover:bg-white/20 hover:border-white font-bold text-base shadow-md backdrop-blur-md transition-all duration-300">
+                        <Icon name="bar-chart-3" className="text-[#E63974]" /> <span>View Projects</span>
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 3. PORTFOLIO SHOWCASE SECTION */}
+          <section id="portfolio" className="py-24 max-w-7xl mx-auto px-4 space-y-12">
+            <div className="text-center space-y-2">
+              <span className="text-xs font-semibold text-[#E63974] uppercase tracking-widest">Showcase</span>
+              <h2 className="text-3xl sm:text-5xl font-extrabold text-white">Experience & Portfolio</h2>
+              <div className="w-24 h-1.5 bg-gradient-to-r from-[#E63974] to-[#389BE8] mx-auto rounded-full mt-2" />
+            </div>
+
+            {/* TAB SYSTEM - 4 DISTINCT PILL TABS */}
+            <div className="flex justify-center">
+              <div className="inline-flex flex-wrap justify-center p-1.5 rounded-full bg-[#1A1218] border border-[#5C1B33] shadow-xl">
+                <button
+                  onClick={() => setActiveTab('experience')}
+                  className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold capitalize transition-all ${activeTab === 'experience' ? 'bg-[#E63974] text-[#0B0B0E] shadow-md font-extrabold' : 'text-[#B8A3B0] hover:text-white'
+                    }`}
+                >
+                  Experience
+                </button>
+                <button
+                  onClick={() => setActiveTab('projects')}
+                  className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold capitalize transition-all ${activeTab === 'projects' ? 'bg-[#E63974] text-[#0B0B0E] shadow-md font-extrabold' : 'text-[#B8A3B0] hover:text-white'
+                    }`}
+                >
+                  Projects
+                </button>
+                <button
+                  onClick={() => setActiveTab('certificates')}
+                  className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold capitalize transition-all ${activeTab === 'certificates' ? 'bg-[#E63974] text-[#0B0B0E] shadow-md font-extrabold' : 'text-[#B8A3B0] hover:text-white'
+                    }`}
+                >
+                  Certificates
+                </button>
+                <button
+                  onClick={() => setActiveTab('techstack')}
+                  className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold capitalize transition-all ${activeTab === 'techstack' ? 'bg-[#E63974] text-[#0B0B0E] shadow-md font-extrabold' : 'text-[#B8A3B0] hover:text-white'
+                    }`}
+                >
+                  Tech Stack
+                </button>
+              </div>
+            </div>
+
+            {/* TAB 1: EXPERIENCE */}
+            {activeTab === 'experience' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                {experienceData.map(exp => (
+                  <div key={exp.id} className="rounded-3xl bg-[#1A1218]/90 border border-[#5C1B33] shadow-xl overflow-hidden flex flex-col justify-between p-7 space-y-4 hover:-translate-y-1.5 hover:shadow-2xl hover:border-[#E63974]/50 transition-all">
+                    <div className="flex items-center justify-between border-b border-[#5C1B33] pb-3">
+                      <span className="text-[11px] font-bold text-[#E63974] px-3 py-1 rounded-full bg-[#241520] border border-[#E63974]/30">{exp.category}</span>
+                      <span className="text-xs font-mono text-[#B8A3B0] px-3 py-1 rounded-full bg-[#241520] border border-[#5C1B33]">{exp.period}</span>
+                    </div>
+                    <div className="space-y-2">
+                      <span className="text-xs font-mono text-[#E63974] font-bold block">{exp.company}</span>
+                      <h3 className="text-xl font-bold text-white">{exp.title}</h3>
+                      <p className="text-xs text-[#B8A3B0] leading-relaxed font-normal">{exp.shortDesc}</p>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {exp.tags.map((tag, idx) => (
+                        <span key={idx} className="px-3 py-1 rounded-full bg-[#241520] border border-[#5C1B33] text-[11px] font-mono text-[#E63974]">{tag}</span>
+                      ))}
+                    </div>
+                    <div className="pt-3 border-t border-[#5C1B33]">
+                      <button onClick={() => setSelectedItem(exp)} className="w-full py-3 rounded-full bg-[#241520] hover:bg-[#3D1E30] border border-[#5C1B33] text-xs font-bold text-white text-center shadow-md">Detail Peran</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* TAB 2: PROJECTS */}
+            {activeTab === 'projects' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                {projectsData.map(p => (
+                  <div key={p.id} className="rounded-3xl bg-[#1A1218]/90 border border-[#5C1B33] shadow-xl overflow-hidden flex flex-col justify-between p-6 space-y-4 hover:-translate-y-1.5 hover:shadow-2xl hover:border-[#E63974]/50 transition-all">
+                    <img src={p.image} alt={p.title} className="w-full h-48 object-cover rounded-2xl bg-[#0B0B0E] border border-[#5C1B33]" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"; }} />
+                    <div className="space-y-2">
+                      <span className="text-[11px] font-bold text-[#E63974]">{p.category}</span>
+                      <h3 className="text-xl font-bold text-white">{p.title}</h3>
+                      <p className="text-xs text-[#B8A3B0] line-clamp-3 font-normal leading-relaxed">{p.shortDesc}</p>
+                    </div>
+                    <div className="pt-2 border-t border-[#5C1B33]">
+                      <button onClick={() => setSelectedItem(p)} className="w-full py-3 rounded-full bg-[#241520] hover:bg-[#3D1E30] border border-[#5C1B33] text-xs font-bold text-white text-center shadow-md">Detail Proyek</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* TAB 3: CERTIFICATES */}
+            {activeTab === 'certificates' && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {certificatesData.map(c => (
+                  <div key={c.id} className="rounded-3xl bg-[#1A1218]/90 border border-[#5C1B33] shadow-xl overflow-hidden flex flex-col justify-between space-y-3 hover:-translate-y-1.5 hover:shadow-2xl hover:border-[#E63974]/50 transition-all">
+                    <div className="relative h-44 overflow-hidden bg-[#0B0B0E] p-2 cursor-pointer" onClick={() => setSelectedCert(c)}>
+                      {c.image && c.image.toLowerCase().endsWith('.pdf') ? (
+                        <div className="w-full h-full rounded-2xl border border-[#5C1B33] bg-gradient-to-br from-[#241520] via-[#1A1218] to-[#0B0B0E] p-4 flex flex-col justify-between group-hover:scale-105 transition-transform duration-500">
+                          <div className="flex items-center justify-between">
+                            <div className="w-10 h-10 rounded-xl bg-[#E63974]/20 border border-[#E63974]/40 flex items-center justify-center text-[#E63974]">
+                              <Icon name="file-text" className="w-5 h-5" />
+                            </div>
+                            <span className="px-2.5 py-0.5 rounded-full bg-[#E63974]/20 border border-[#E63974]/40 text-[#E63974] text-[10px] font-mono font-bold uppercase">
+                              PDF DOCUMENT
+                            </span>
+                          </div>
+                          <div>
+                            <p className="text-xs font-bold text-white line-clamp-1">{c.title}</p>
+                            <p className="text-[10px] text-[#B8A3B0] font-mono">{c.issuer}</p>
+                          </div>
+                        </div>
+                      ) : (
+                        <img src={c.image || './assets/cert-bnsp.png'} alt={c.title} className="w-full h-full object-cover rounded-2xl bg-[#0B0B0E] border border-[#5C1B33]" onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&w=800&q=80"; }} />
+                      )}
+                      <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#1A1218]/95 border border-[#5C1B33] text-[#E63974] text-[10px] font-mono font-semibold flex items-center gap-1 shadow-sm">
+                        <Icon name="shield-check" className="w-3 h-3 text-[#E63974]" /> {c.date}
+                      </span>
+                    </div>
+                    <div className="p-6 pt-1 flex-1 flex flex-col justify-between space-y-3">
+                      <div>
+                        <span className="text-[11px] font-mono text-[#E63974]">{c.issuer}</span>
+                        <h3 className="text-base font-bold text-white mt-1">{c.title}</h3>
+                        <p className="text-xs text-[#B8A3B0] mt-1 line-clamp-2 font-normal leading-relaxed">{c.description}</p>
+                      </div>
+                      <div className="pt-3 border-t border-[#5C1B33] flex justify-between items-center">
+                        <span className="text-[10px] font-mono text-[#B8A3B0]">{c.credentialId}</span>
+                        <button onClick={() => setSelectedCert(c)} className="px-4 py-2 rounded-full bg-[#E63974] hover:bg-[#F44380] text-[#0B0B0E] text-xs font-semibold flex items-center gap-1 shadow-md">
+                          <span>Lihat Sertifikat</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* TAB 4: TECH STACK - RESTRUCTURED BY SKILL LEVEL GROUPS */}
+            {activeTab === 'techstack' && (
+              <div className="space-y-12">
+
+                {/* Level Filter Pills */}
+                <div className="flex flex-wrap justify-center gap-2 mb-6">
+                  {['All', 'Advanced', 'Intermediate', 'Beginner'].map(cat => (
+                    <button
+                      key={cat}
+                      onClick={() => setTechFilter(cat)}
+                      className={`px-5 py-2 rounded-full text-xs font-extrabold transition-all duration-300 ${techFilter === cat
+                        ? 'bg-gradient-to-r from-[#E63974] to-[#C22357] text-[#0B0B0E] shadow-lg shadow-pink-950/50 scale-105'
+                        : 'bg-[#1A1218] border border-[#5C1B33] text-[#B8A3B0] hover:text-white'
+                        }`}
+                    >
+                      {cat === 'All' ? 'Tampilkan Semua Level' : `Level ${cat}`}
+                    </button>
+                  ))}
+                </div>
+
+                {/* GROUP 1: ADVANCED LEVEL (RETRO TAG YELLOW THEME) */}
+                {(techFilter === 'All' || techFilter === 'Advanced') && (
+                  <div className="space-y-4 bg-[#1A1218]/60 p-6 sm:p-8 rounded-3xl border border-[#F5D647]/30 shadow-2xl backdrop-blur-md">
+
+                    <div className="flex items-center justify-between border-b border-[#F5D647]/20 pb-3">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-3 h-3 rounded-full bg-[#F5D647] shadow-lg shadow-yellow-400/50 animate-pulse" />
+                        <h3 className="text-base sm:text-lg font-mono font-extrabold text-[#F5D647] uppercase tracking-wider">
+                          Advanced Level Skills
+                        </h3>
+                      </div>
+                      <span className="px-3.5 py-1 rounded-full bg-[#F5D647]/15 text-[#F5D647] border border-[#F5D647]/30 text-xs font-mono font-bold">
+                        Mastered & Proficient
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-2">
+                      {advancedTech.map((tech, idx) => (
+                        <div
+                          key={idx}
+                          className="group p-5 rounded-2xl bg-[#0B0B0E]/90 border border-[#5C1B33] hover:border-[#F5D647] shadow-lg flex flex-col justify-between space-y-4 hover:-translate-y-1 transition-all duration-300"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-12 h-12 rounded-2xl bg-[#241520] border border-[#5C1B33] flex items-center justify-center text-[#F5D647] shrink-0 group-hover:scale-110 transition-transform">
+                              <Icon name={tech.icon} />
+                            </div>
+                            <div>
+                              <h4 className="text-sm font-bold text-white group-hover:text-[#F5D647] transition-colors">
+                                {tech.name}
+                              </h4>
+                              <span className="text-[10px] font-mono text-[#B8A3B0] block">
+                                {tech.category}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="space-y-1.5 pt-1">
+                            <div className="flex justify-between items-center text-[10px] font-mono">
+                              <span className="px-2.5 py-0.5 rounded-full bg-[#F5D647]/20 text-[#F5D647] border border-[#F5D647]/40 font-bold">
+                                Advanced
+                              </span>
+                              <span className="text-[#F5D647] font-bold">{tech.levelPercent}%</span>
+                            </div>
+
+                            <div className="w-full h-1.5 rounded-full bg-[#241520] overflow-hidden p-0.5">
+                              <div
+                                className="h-full rounded-full bg-gradient-to-r from-[#E63974] via-[#389BE8] to-[#F5D647] transition-all duration-500 shadow-sm"
+                                style={{ width: `${tech.levelPercent}%` }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* GROUP 2: INTERMEDIATE LEVEL (HOT MAGENTA PINK THEME) */}
+                {(techFilter === 'All' || techFilter === 'Intermediate') && (
+                  <div className="space-y-4 bg-[#1A1218]/60 p-6 sm:p-8 rounded-3xl border border-[#E63974]/30 shadow-2xl backdrop-blur-md">
+
+                    <div className="flex items-center justify-between border-b border-[#E63974]/20 pb-3">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-3 h-3 rounded-full bg-[#E63974] shadow-lg shadow-pink-500/50 animate-pulse" />
+                        <h3 className="text-base sm:text-lg font-mono font-extrabold text-[#E63974] uppercase tracking-wider">
+                          Intermediate Level Skills
+                        </h3>
+                      </div>
+                      <span className="px-3.5 py-1 rounded-full bg-[#E63974]/15 text-[#E63974] border border-[#E63974]/30 text-xs font-mono font-bold">
+                        Strong Working Knowledge
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                      {intermediateTech.map((tech, idx) => (
+                        <div
+                          key={idx}
+                          className="group p-5 rounded-2xl bg-[#0B0B0E]/90 border border-[#5C1B33] hover:border-[#E63974] shadow-lg flex flex-col justify-between space-y-4 hover:-translate-y-1 transition-all duration-300"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-12 h-12 rounded-2xl bg-[#241520] border border-[#E63974]/40 flex items-center justify-center text-[#E63974] shrink-0 group-hover:scale-110 transition-transform">
+                              <Icon name={tech.icon} />
+                            </div>
+                            <div>
+                              <h4 className="text-sm font-bold text-white group-hover:text-[#E63974] transition-colors">
+                                {tech.name}
+                              </h4>
+                              <span className="text-[10px] font-mono text-[#B8A3B0] block">
+                                {tech.category}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="space-y-1.5 pt-1">
+                            <div className="flex justify-between items-center text-[10px] font-mono">
+                              <span className="px-2.5 py-0.5 rounded-full bg-[#E63974]/20 text-[#E63974] border border-[#E63974]/40 font-bold">
+                                Intermediate
+                              </span>
+                              <span className="text-[#E63974] font-bold">{tech.levelPercent}%</span>
+                            </div>
+
+                            <div className="w-full h-1.5 rounded-full bg-[#241520] overflow-hidden p-0.5">
+                              <div
+                                className="h-full rounded-full bg-gradient-to-r from-[#C22357] via-[#E63974] to-[#FF70A6] transition-all duration-500 shadow-sm"
+                                style={{ width: `${tech.levelPercent}%` }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* GROUP 3: BEGINNER LEVEL (ELECTRIC CYAN THEME) */}
+                {(techFilter === 'All' || techFilter === 'Beginner') && (
+                  <div className="space-y-4 bg-[#1A1218]/60 p-6 sm:p-8 rounded-3xl border border-[#389BE8]/30 shadow-2xl backdrop-blur-md">
+
+                    <div className="flex items-center justify-between border-b border-[#389BE8]/20 pb-3">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-3 h-3 rounded-full bg-[#389BE8] shadow-lg shadow-cyan-500/50 animate-pulse" />
+                        <h3 className="text-base sm:text-lg font-mono font-extrabold text-[#389BE8] uppercase tracking-wider">
+                          Beginner Level Skills
+                        </h3>
+                      </div>
+                      <span className="px-3.5 py-1 rounded-full bg-[#389BE8]/15 text-[#389BE8] border border-[#389BE8]/30 text-xs font-mono font-bold">
+                        Foundational & Expanding
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
+                      {beginnerTech.map((tech, idx) => (
+                        <div
+                          key={idx}
+                          className="group p-5 rounded-2xl bg-[#0B0B0E]/90 border border-[#5C1B33] hover:border-[#389BE8] shadow-lg flex flex-col justify-between space-y-4 hover:-translate-y-1 transition-all duration-300"
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className="w-12 h-12 rounded-2xl bg-[#241520] border border-[#389BE8]/40 flex items-center justify-center text-[#389BE8] shrink-0 group-hover:scale-110 transition-transform">
+                              <Icon name={tech.icon} />
+                            </div>
+                            <div>
+                              <h4 className="text-sm font-bold text-white group-hover:text-[#389BE8] transition-colors">
+                                {tech.name}
+                              </h4>
+                              <span className="text-[10px] font-mono text-[#B8A3B0] block">
+                                {tech.category}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="space-y-1.5 pt-1">
+                            <div className="flex justify-between items-center text-[10px] font-mono">
+                              <span className="px-2.5 py-0.5 rounded-full bg-[#389BE8]/20 text-[#389BE8] border border-[#389BE8]/40 font-bold">
+                                Beginner
+                              </span>
+                              <span className="text-[#389BE8] font-bold">{tech.levelPercent}%</span>
+                            </div>
+
+                            <div className="w-full h-1.5 rounded-full bg-[#241520] overflow-hidden p-0.5">
+                              <div
+                                className="h-full rounded-full bg-gradient-to-r from-[#2A85D0] via-[#389BE8] to-[#60B2F0] transition-all duration-500 shadow-sm"
+                                style={{ width: `${tech.levelPercent}%` }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+              </div>
+            )}
+          </section>
+
+          {/* 4. CONTACT SECTION */}
+          <section id="contact" className="relative py-24 bg-gradient-to-b from-[#181016] via-[#0B0B0E] to-[#0B0B0E] border-t border-[#5C1B33]/60 px-4">
+            {/* Soft Ambient Cyber Glow Orbs */}
+            <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#E63974]/10 rounded-full blur-[160px] pointer-events-none" />
+            <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-[#389BE8]/15 rounded-full blur-[160px] pointer-events-none" />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+
+              {/* Section Header */}
+              <div className="text-center max-w-3xl mx-auto space-y-3">
+                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1A1218]/90 border border-[#5C1B33] text-xs font-bold uppercase text-[#E63974] shadow-md backdrop-blur-md">
+                  <Icon name="sparkles" className="w-3.5 h-3.5 text-[#E63974]" />
+                  <span>HUBUNGI SAYA</span>
+                </div>
+
+                <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+                  Get In Touch
+                </h2>
+
+                <div className="w-20 h-1.5 bg-gradient-to-r from-[#E63974] to-[#389BE8] mx-auto rounded-full mt-2" />
+              </div>
+
+              {/* Futuristic Horizontal Contact Layout */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+
+                {/* SISI KIRI: Glowing Neon Ring with Bold Typography */}
+                <div className="lg:col-span-5 flex justify-center">
+                  <div className="relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96 rounded-full border-2 border-white/60 shadow-[0_0_50px_rgba(230,57,116,0.35)] backdrop-blur-md bg-white/5 flex items-center justify-center p-8 text-center group hover:border-white/90 transition-all duration-500">
+                    {/* Outer Glowing Neon Rings */}
+                    <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-[#E63974]/30 via-[#389BE8]/30 to-[#F5D647]/30 blur-2xl animate-pulse pointer-events-none" />
+                    <div className="absolute -inset-1 rounded-full border border-white/20 animate-[spin_10s_linear_infinite] pointer-events-none" />
+
+                    {/* Centered Typography */}
+                    <div className="relative z-10 space-y-3 px-2">
+                      <Icon name="sparkles" className="w-8 h-8 text-[#E63974] mx-auto animate-bounce" />
+                      <h3 className="text-lg sm:text-2xl lg:text-3xl font-black text-white tracking-tight uppercase leading-snug">
+                        LET'S CREATE <span className="bg-gradient-to-r from-[#E63974] via-[#FF70A6] to-[#389BE8] bg-clip-text text-transparent">SOMETHING EXTRAORDINARY</span> TOGETHER
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                {/* SISI KANAN: Thin Outline Card with Vertical Contact Info & Social Circles */}
+                <div className="lg:col-span-7">
+                  <div className="border border-white/50 rounded-3xl md:rounded-[2rem] p-6 sm:p-8 md:p-10 backdrop-blur-sm bg-white/5 shadow-2xl shadow-white/5 space-y-8 text-white transition-all duration-300 hover:border-white/70">
+
+                    {/* Card Title & Status Badge */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/20 pb-6">
+                      <div>
+                        <h4 className="text-xl sm:text-2xl font-extrabold text-white">Contact Information</h4>
+                        <p className="text-xs text-[#B8A3B0] mt-1">Direct communication & social networks</p>
+                      </div>
+
+                      {/* Status Badge */}
+                      <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-400/40 text-emerald-300 text-xs font-bold tracking-wider backdrop-blur-md w-fit">
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
+                        <span>Open for opportunities</span>
+                      </div>
+                    </div>
+
+                    {/* Content Grid inside Card: Left = Vertical Info, Right = Social Icons */}
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
+                      {/* Left Side: Vertical Contact Info */}
+                      <div className="md:col-span-8 space-y-6">
+                        {/* Email Direct */}
+                        <a
+                          href={personalData.socials.email.url}
+                          className="flex items-center gap-4 group p-3 rounded-2xl transition-colors hover:bg-white/5"
+                        >
+                          <div className="w-12 h-12 rounded-full border border-white/40 bg-white/5 flex items-center justify-center text-[#E63974] group-hover:border-[#E63974] group-hover:scale-110 transition-all shrink-0">
+                            <Icon name="mail" className="w-5 h-5 text-[#E63974]" />
+                          </div>
+                          <div className="overflow-hidden">
+                            <p className="text-[10px] font-mono uppercase text-[#B8A3B0] tracking-widest">Email Direct</p>
+                            <h5 className="text-sm sm:text-base font-bold text-white group-hover:text-[#E63974] transition-colors truncate">
+                              {personalData.socials.email.username}
+                            </h5>
+                          </div>
+                        </a>
+
+                        {/* Location */}
+                        <div className="flex items-center gap-4 p-3 rounded-2xl">
+                          <div className="w-12 h-12 rounded-full border border-white/40 bg-white/5 flex items-center justify-center text-[#389BE8] shrink-0">
+                            <Icon name="map-pin" className="w-5 h-5 text-[#389BE8]" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-mono uppercase text-[#B8A3B0] tracking-widest">Location</p>
+                            <h5 className="text-sm sm:text-base font-bold text-white">
+                              Jakarta, Indonesia
+                            </h5>
+                          </div>
+                        </div>
+
+                        {/* WhatsApp / Call */}
+                        <a
+                          href={personalData.socials.whatsapp?.url || "https://wa.me/6285891259937"}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-4 group p-3 rounded-2xl transition-colors hover:bg-white/5"
+                        >
+                          <div className="w-12 h-12 rounded-full border border-white/40 bg-white/5 flex items-center justify-center text-[#F5D647] group-hover:border-[#F5D647] group-hover:scale-110 transition-all shrink-0">
+                            <Icon name="phone" className="w-5 h-5 text-[#F5D647]" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] font-mono uppercase text-[#B8A3B0] tracking-widest">WhatsApp / Call</p>
+                            <h5 className="text-sm sm:text-base font-bold text-white group-hover:text-[#F5D647] transition-colors">
+                              {personalData.socials.whatsapp?.username || "+62 858-9125-9937"}
+                            </h5>
+                          </div>
+                        </a>
+                      </div>
+
+                      {/* Right Side: Social Media Circles (Cleanly without barcode/QR) */}
+                      <div className="md:col-span-4 flex md:flex-col items-center justify-center gap-4 pt-4 md:pt-0 border-t md:border-t-0 md:border-l border-white/10 md:pl-6">
+                        <p className="text-[10px] font-mono uppercase text-[#B8A3B0] tracking-widest hidden md:block text-center mb-1">
+                          Socials
+                        </p>
+
+                        {/* LinkedIn */}
+                        <a
+                          href={personalData.socials.linkedin.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="LinkedIn"
+                          className="w-12 h-12 rounded-full border border-white/40 bg-white/5 hover:border-[#E63974] hover:bg-white/15 hover:scale-110 flex items-center justify-center text-white transition-all shadow-md group"
+                        >
+                          <Icon name="linkedin" className="w-5 h-5 text-white group-hover:text-[#E63974] transition-colors" />
+                        </a>
+
+                        {/* GitHub */}
+                        <a
+                          href={personalData.socials.github.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="GitHub"
+                          className="w-12 h-12 rounded-full border border-white/40 bg-white/5 hover:border-[#E63974] hover:bg-white/15 hover:scale-110 flex items-center justify-center text-white transition-all shadow-md group"
+                        >
+                          <Icon name="github" className="w-5 h-5 text-white group-hover:text-[#E63974] transition-colors" />
+                        </a>
+
+                        {/* Direct Email */}
+                        <a
+                          href={personalData.socials.email.url}
+                          title="Send Email"
+                          className="w-12 h-12 rounded-full border border-white/40 bg-white/5 hover:border-[#E63974] hover:bg-white/15 hover:scale-110 flex items-center justify-center text-white transition-all shadow-md group"
+                        >
+                          <Icon name="mail" className="w-5 h-5 text-white group-hover:text-[#E63974] transition-colors" />
+                        </a>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </section>
+
+          {/* FOOTER */}
+          <footer className="py-8 bg-[#0B0B0E] border-t border-[#5C1B33] text-center text-xs text-[#B8A3B0]">
+            © {new Date().getFullYear()} Maulidatun Nazwa. All rights reserved. Crafted with React & Tailwind CSS.
+          </footer>
+
+          {/* Modals */}
+          <ProjectModal project={selectedItem} isOpen={!!selectedItem} onClose={() => setSelectedItem(null)} />
+          <CertificateModal certificate={selectedCert} isOpen={!!selectedCert} onClose={() => setSelectedCert(null)} />
+          <CVModal isOpen={cvOpen} onClose={() => setCvOpen(false)} />
+
+        </div>
+      );
+    }
+
+    // Render Nazwa React App
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+
+</html>
